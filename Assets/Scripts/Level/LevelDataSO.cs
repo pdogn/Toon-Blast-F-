@@ -25,6 +25,8 @@ public class LevelDataSO : ScriptableObject
         return pattern;
     }
 
+    public int Moves = 30;
+
 #if UNITY_EDITOR
     private void OnValidate()
     {

@@ -8,16 +8,20 @@ public class PuzzleLevelDataDrawer : Editor
     private const string PROPERTY_PATH_WIDTH = "m_width";
     private const string PROPERTY_PATH_HEIGHT = "m_height";
     private const string PROPERTY_PATH_PATTERN = "m_patternFlatter";
+    private const string PROPERTY_PATH_MOVES = "Moves";
 
     private SerializedProperty sWidth;
     private SerializedProperty sHeight;
     private SerializedProperty sPattern;
+    private SerializedProperty sMoves;
 
     private void OnEnable()
     {
         sWidth = serializedObject.FindProperty(PROPERTY_PATH_WIDTH);
         sHeight = serializedObject.FindProperty(PROPERTY_PATH_HEIGHT);
         sPattern = serializedObject.FindProperty(PROPERTY_PATH_PATTERN);
+        sMoves = serializedObject.FindProperty(PROPERTY_PATH_MOVES);
+
     }
 
     public override VisualElement CreateInspectorGUI()
@@ -35,6 +39,8 @@ public class PuzzleLevelDataDrawer : Editor
                     sWidth.intValue = uWidth > 0 ? uWidth : 1;
                     int uHeight = EditorGUILayout.IntField("Height", sHeight.intValue);
                     sHeight.intValue = uHeight > 0 ? uHeight : 1;
+                    int uMoves = EditorGUILayout.IntField("Move", sMoves.intValue);
+                    sMoves.intValue = uMoves > 0 ? uMoves : 1;
                     if (GUILayout.Button("Update Size"))
                         sPattern.arraySize = sWidth.intValue * sHeight.intValue;
                     if (changeCheckScope.changed)

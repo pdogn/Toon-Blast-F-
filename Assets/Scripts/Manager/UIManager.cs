@@ -74,4 +74,9 @@ public class UIManager : MonoBehaviour
         menuEnd.GetChild(2).GetComponent<RectTransform>().DOAnchorPos(new Vector2(0, -440), 1f).SetEase(Ease.OutBounce);
     }
 
+    public void Restart()
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+    }
+
 }

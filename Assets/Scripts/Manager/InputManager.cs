@@ -9,7 +9,7 @@ public class InputManager : MonoBehaviour
 
     private void Update()
     {
-        if (UIManager.instance.cdTime > 0)
+        if (UIManager.instance.cdTime > 0 && MovesPanel.Instance.Moves > 0)
         {
             GetEditorInputs();
         }
