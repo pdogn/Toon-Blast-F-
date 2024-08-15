@@ -15,6 +15,9 @@ public class UIManager : MonoBehaviour
     public GameObject failMenu;
     public GameObject winMenu;
 
+    [Space]
+    public GameObject exitBtn;
+
     public static UIManager instance;
 
     private void Awake()
@@ -79,4 +82,21 @@ public class UIManager : MonoBehaviour
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 
+    int clickCount = 0;
+    Tween moveExitBtn;
+    public void Setting()
+    {
+        clickCount++;
+        if (clickCount == 1)
+        {
+            exitBtn.SetActive(true);
+            moveExitBtn = exitBtn.GetComponent<RectTransform>().DOAnchorPos(new Vector2(80, 50), .4f).SetAutoKill(false);
+        }
+        else
+        {
+            clickCount = 0;
+            moveExitBtn.PlayBackwards();
+            exitBtn.SetActive(false);
+        }
+    }
 }

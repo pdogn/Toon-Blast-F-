@@ -24,6 +24,7 @@ public class CubeBlock : Block
                 canTapped = false;
                 //bool isRocketSpawned = false;
                 //int sameNeighboursCount = mySameNeighbours.Count;
+                AudioManager.Instance.PlayCubeExplosionAudio();
                 MovesPanel.Instance.Moves = MovesPanel.Instance.Moves - 1;
                 bool canSpawnRocket = false; /*sameNeighboursCount >= 5;*/
                 foreach (GameObject neigh in mySameNeighbours)

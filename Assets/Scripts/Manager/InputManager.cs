@@ -7,9 +7,11 @@ public class InputManager : MonoBehaviour
     [SerializeField] private Camera mainCam;
     private bool canClick = false;
 
+    [SerializeField] GameManager gameManager;
+
     private void Update()
     {
-        if (UIManager.instance.cdTime > 0 && MovesPanel.Instance.Moves > 0)
+        if (UIManager.instance.cdTime > 0 && MovesPanel.Instance.Moves > 0 && gameManager.canClick)
         {
             GetEditorInputs();
         }

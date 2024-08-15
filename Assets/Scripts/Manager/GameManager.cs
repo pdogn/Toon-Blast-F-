@@ -6,13 +6,18 @@ public class GameManager : MonoBehaviour
 {
     [SerializeField] GameObject person;
 
-    public bool isWin;
+    //public bool isWin;
+    public bool canClick;
     bool ended;
+
+    [SerializeField] Animator anim1;
+    [SerializeField] Animator anim2;
     
     // Start is called before the first frame update
     void Start()
     {
         ended = false;
+        canClick = true;
     }
 
     // Update is called once per frame
@@ -22,6 +27,14 @@ public class GameManager : MonoBehaviour
         {
             UIManager.instance.cdTime -= 1 * Time.deltaTime;
             UIManager.instance.TimeCountDown(UIManager.instance.cdTime);
+
+            Collider2D coll = Physics2D.OverlapBox(person.transform.position + new Vector3(0, 0.5f, 0), new Vector2(0.5f, 0.4f), 0);
+            if (coll.gameObject.tag == "Fluid")
+            {
+                canClick = false;
+                anim1.SetBool("isDrown", true);
+                anim2.SetBool("isDrown", true);
+            }
         }
         else
         {
@@ -38,12 +51,12 @@ public class GameManager : MonoBehaviour
 
             if (col.gameObject.tag == "Fluid")
             {
-                isWin = false;
+                //isWin = false;
                 UIManager.instance.OpenFailMenu();
             }
             else
             {
-                isWin = true;
+                //isWin = true;
                 UIManager.instance.OpenWinMenu();
             }
         }
