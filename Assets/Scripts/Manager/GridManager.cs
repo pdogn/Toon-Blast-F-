@@ -73,10 +73,13 @@ public class GridManager : MonoBehaviour
                 GameObject spawnedBlockObj = Instantiate(blockObjPrefab, spawnPos, Quaternion.identity,
                     spawnedBlocksParent);
                 //Thêm loại block vào block mới sinh
-                AddBlockTypeToBlockObj(spawnedBlockObj, i, j, spawnedPosObj.transform);
-
+                //AddBlockTypeToBlockObj(spawnedBlockObj, i, j, spawnedPosObj.transform);
+                GetCubeType(spawnedBlockObj,i, j, spawnedPosObj.transform);
+                
                 allBlocks[i].rows[j] = spawnedBlockObj;
                 allPosObjs[i].rows[j] = spawnedPosObj;
+                
+                
             }
         }
 
@@ -97,5 +100,22 @@ public class GridManager : MonoBehaviour
         currentBlock.gridIndex = new Vector2(xIndex, yIndex);
         currentBlock.target = spawnedPosTransform;
         currentBlock.SetupBlock();
+    }
+
+    public void GetCubeType(GameObject blockObj ,int xIndex, int yIndex, Transform spawnedPosTransform)
+    {
+        CubeBlock currentBlock = blockObj.AddComponent<CubeBlock>();
+        int y = LevelManager.Instance.crrLevel.width;//số cột của grid
+        CubeTypes crrCubetype = LevelManager.Instance.crrLevel.cubeTypes[yIndex * y + xIndex];
+        blockObj.gameObject.GetComponent<CubeBlock>().cubeType = crrCubetype;
+        
+        currentBlock.gridIndex = new Vector2(xIndex, yIndex);
+        currentBlock.target = spawnedPosTransform;
+        currentBlock.SetupBlock();
+
+        if (LevelManager.Instance.crrLevel.patternFlatter[yIndex * y + xIndex] == false)
+        {
+            currentBlock.gameObject.SetActive(false);
+        }
     }
 }

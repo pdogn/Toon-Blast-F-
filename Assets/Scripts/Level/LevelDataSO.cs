@@ -15,6 +15,12 @@ public class LevelDataSO : ScriptableObject
 
     [SerializeField]
     private bool[] m_patternFlatter = default;
+    public bool[] patternFlatter => m_patternFlatter;
+    
+    //
+    [SerializeField] 
+    private CubeTypes[] m_patternTyPeFlatter;
+    public CubeTypes[] cubeTypes => m_patternTyPeFlatter;
 
     public bool[,] GetPattern()
     {

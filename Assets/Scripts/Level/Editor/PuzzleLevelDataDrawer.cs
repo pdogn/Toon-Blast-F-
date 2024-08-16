@@ -1,4 +1,5 @@
 using UnityEditor;
+using UnityEditor.Rendering;
 using UnityEngine;
 using UnityEngine.UIElements;
 
@@ -9,11 +10,16 @@ public class PuzzleLevelDataDrawer : Editor
     private const string PROPERTY_PATH_HEIGHT = "m_height";
     private const string PROPERTY_PATH_PATTERN = "m_patternFlatter";
     private const string PROPERTY_PATH_MOVES = "Moves";
+    //
+    private const string PROPERTY_PATH_TYPE = "m_patternTyPeFlatter";
 
     private SerializedProperty sWidth;
     private SerializedProperty sHeight;
     private SerializedProperty sPattern;
     private SerializedProperty sMoves;
+    
+    //
+    private SerializedProperty sCubetype;
 
     private void OnEnable()
     {
@@ -21,6 +27,9 @@ public class PuzzleLevelDataDrawer : Editor
         sHeight = serializedObject.FindProperty(PROPERTY_PATH_HEIGHT);
         sPattern = serializedObject.FindProperty(PROPERTY_PATH_PATTERN);
         sMoves = serializedObject.FindProperty(PROPERTY_PATH_MOVES);
+        
+        //
+        sCubetype = serializedObject.FindProperty(PROPERTY_PATH_TYPE);
 
     }
 
@@ -41,8 +50,11 @@ public class PuzzleLevelDataDrawer : Editor
                     sHeight.intValue = uHeight > 0 ? uHeight : 1;
                     int uMoves = EditorGUILayout.IntField("Move", sMoves.intValue);
                     sMoves.intValue = uMoves > 0 ? uMoves : 1;
-                    if (GUILayout.Button("Update Size"))
-                        sPattern.arraySize = sWidth.intValue * sHeight.intValue;
+                    // if (GUILayout.Button("Update Size"))
+                    // {
+                    //     sPattern.arraySize = sWidth.intValue * sHeight.intValue;
+                    //     sCubetype.arraySize = sWidth.intValue * sHeight.intValue;
+                    // }
                     if (changeCheckScope.changed)
                         serializedObject.ApplyModifiedProperties();
                 }
@@ -114,8 +126,58 @@ public class PuzzleLevelDataDrawer : Editor
             }
         });
         groupBoxGemFieldEditor.Add(imguiContainerFieldEditor);
+        
+        var groupBoxTypeBlockEditor = new GroupBox();
+        groupBoxTypeBlockEditor.Add(new Label("Cube Type"));
+        IMGUIContainer imguiTypeBlockEditor = new IMGUIContainer(() =>
+        {
+            using (new GUILayout.VerticalScope())
+            {
+                using (var changeCheckScope = new EditorGUI.ChangeCheckScope())
+                {
+                    if (sCubetype.arraySize == sWidth.intValue * sHeight.intValue)
+                    {
+                        using (new GUILayout.VerticalScope())
+                        {
+                            for (int y = 0; y < sHeight.intValue; ++y)
+                            {
+                                using (new GUILayout.HorizontalScope())
+                                {
+                                    GUILayout.FlexibleSpace();
+                                    for (int x = 0; x < sWidth.intValue; ++x)
+                                    {
+                                        var sValue = sCubetype.GetArrayElementAtIndex(y * sWidth.intValue + x);
+                                        if (sValue.propertyType == SerializedPropertyType.Enum)
+                                        {
+                                            // Hiển thị dropdown cho enum với các giá trị hiện tại và các tên giá trị của enum
+                                            sValue.enumValueIndex = EditorGUILayout.Popup(sValue.enumValueIndex, sValue.enumDisplayNames);
+                                        }
+                                        else
+                                        {
+                                            Debug.LogError("SerializedPropernum.");
+                                        }
+                                    }
+                                    GUILayout.FlexibleSpace();
+                                }
+                            }
+                        }
+                    }
+                    GUILayout.Space(20);
+                    if (GUILayout.Button("Update Size"))
+                    {
+                        sPattern.arraySize = sWidth.intValue * sHeight.intValue;
+                        sCubetype.arraySize = sWidth.intValue * sHeight.intValue;
+                    }
+                    if (changeCheckScope.changed)
+                        serializedObject.ApplyModifiedProperties();
+                }
+            }
+        });
+        //groupBoxGemFieldEditor.Add(imguiContainerFieldEditor);
+        groupBoxTypeBlockEditor.Add(imguiTypeBlockEditor);
         scrollView.Add(groupBoxSettings);
         scrollView.Add(groupBoxGemFieldEditor);
+        scrollView.Add(groupBoxTypeBlockEditor);
         visualElement.Add(scrollView);
         return visualElement;
     }

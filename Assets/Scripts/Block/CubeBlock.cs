@@ -6,7 +6,7 @@ using UnityEngine;
 public class CubeBlock : Block
 {
     public override BlockTypes blockType => BlockTypes.Cube;
-
+    
     public override Vector3 spriteSize => new Vector3(0.5f, 0.5f, 0.5f);
 
     private SpriteRenderer mySpriteRenderer;

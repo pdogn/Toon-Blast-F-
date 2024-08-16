@@ -1475,7 +1475,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   basefluid: {fileID: 4102340954740146445, guid: 7bd72df7b95246f439c7162584d6288a, type: 3}
   maxFluidCount: 180
-  fluidRate: 15
+  fluidRate: 6
   waterList: []
   dd: 0
 --- !u!212 &66352511
@@ -2666,7 +2666,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   basefluid: {fileID: 4102340954740146445, guid: 7bd72df7b95246f439c7162584d6288a, type: 3}
   maxFluidCount: 180
-  fluidRate: 15
+  fluidRate: 6
   waterList: []
   dd: 0
 --- !u!212 &121915133
@@ -8278,7 +8278,7 @@ Camera:
   far clip plane: 1000
   field of view: 60
   orthographic: 1
-  orthographic size: 6.7
+  orthographic size: 6.931597
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
