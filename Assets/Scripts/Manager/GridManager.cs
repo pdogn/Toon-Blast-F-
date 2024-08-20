@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 [Serializable]
@@ -74,12 +75,12 @@ public class GridManager : MonoBehaviour
                     spawnedBlocksParent);
                 //Thêm loại block vào block mới sinh
                 //AddBlockTypeToBlockObj(spawnedBlockObj, i, j, spawnedPosObj.transform);
-                GetCubeType(spawnedBlockObj,i, j, spawnedPosObj.transform);
+                //GetCubeType(spawnedBlockObj,i, j, spawnedPosObj.transform);
                 
                 allBlocks[i].rows[j] = spawnedBlockObj;
                 allPosObjs[i].rows[j] = spawnedPosObj;
                 
-                
+                GetCubeType(spawnedBlockObj,i, j, spawnedPosObj.transform);
             }
         }
 
@@ -116,6 +117,7 @@ public class GridManager : MonoBehaviour
         if (LevelManager.Instance.crrLevel.patternFlatter[yIndex * y + xIndex] == false)
         {
             currentBlock.gameObject.SetActive(false);
+            allBlocks[xIndex].rows[yIndex] = null;
         }
     }
 }
