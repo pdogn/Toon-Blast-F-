@@ -1934,7 +1934,7 @@ MonoBehaviour:
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
+          m_IntArgument: 3
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
@@ -10708,12 +10708,16 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8096046545037954712, guid: 2f2ce6fff223e71409ddb835644b8114, type: 3}
       propertyPath: levelDataSOs.Array.size
-      value: 3
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 8096046545037954712, guid: 2f2ce6fff223e71409ddb835644b8114, type: 3}
       propertyPath: levelDataSOs.Array.data[2]
       value: 
       objectReference: {fileID: 11400000, guid: 68711b369f32d6042ae4184af9ddcb74, type: 2}
+    - target: {fileID: 8096046545037954712, guid: 2f2ce6fff223e71409ddb835644b8114, type: 3}
+      propertyPath: levelDataSOs.Array.data[3]
+      value: 
+      objectReference: {fileID: 11400000, guid: 64b5532eb58697d4c9ea0c2dad43205d, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
