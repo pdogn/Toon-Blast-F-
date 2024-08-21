@@ -6,20 +6,29 @@ using UnityEngine.UI;
 
 public class UIHome : MonoBehaviour
 {
+    [Header("HOME PANEL")]
+    public RectTransform btn_Start;
+    
+    [Space(12)]
+    [Header("LEVEL PANEL")]
     public RectTransform RollLevel;
     public GameObject[] dotBar;
     public Sprite[] dotImg;
     public List<Transform> levelbtn;
 
-    public bool allowPress;
-    public int crrPageIndx;
+    bool allowPress;
+    int crrPageIndx;
+
+    public RectTransform back_btn, next_btn;
     
     // Start is called before the first frame update
     void Start()
     {
+        AnimStartBtn();
         SetupLevelbtn();
         allowPress = true;
         crrPageIndx = 1;
+        back_btn.gameObject.SetActive(false);
         dotBar[0].GetComponent<RectTransform>().DOScale(new Vector3(1.5f, 1.5f, 1), .2f);
     }
 
@@ -45,6 +54,8 @@ public class UIHome : MonoBehaviour
                 allowPress = true;
             });
             ChangeDotBar();
+            next_btn.gameObject.SetActive(crrPageIndx == dotBar.Length ? false : true);
+            back_btn.gameObject.SetActive(true);
         }
     }
 
@@ -62,6 +73,8 @@ public class UIHome : MonoBehaviour
                 allowPress = true;
             });
             ChangeDotBar();
+            back_btn.gameObject.SetActive(crrPageIndx == 1 ? false : true);
+            next_btn.gameObject.SetActive(true);
         }
     }
 
@@ -77,5 +90,10 @@ public class UIHome : MonoBehaviour
                 dotBar[i].GetComponent<RectTransform>().DOScale(new Vector3(1.5f, 1.5f, 1), .2f);
             }
         }
+    }
+
+    void AnimStartBtn()
+    {
+        btn_Start.DOScale(new Vector3(1.5f, 1.5f, 1f), 1f).SetLoops(-1, LoopType.Yoyo).SetEase(Ease.InOutSine);
     }
 }

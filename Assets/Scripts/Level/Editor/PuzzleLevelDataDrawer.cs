@@ -161,6 +161,19 @@ public class PuzzleLevelDataDrawer : Editor
                                 }
                             }
                         }
+                        GUILayout.Space(16.0f);
+                        using (new GUILayout.HorizontalScope())
+                        {
+                            if (GUILayout.Button("Reset type"))
+                            {
+                                for (int i = 0; i < sCubetype.arraySize; ++i)
+                                {
+                                    var sValue = sCubetype.GetArrayElementAtIndex(i);
+                                    sValue.enumValueIndex = 0;
+                                }
+                            }
+                            GUILayout.FlexibleSpace();
+                        }
                     }
                     GUILayout.Space(20);
                     if (GUILayout.Button("Update Size"))
