@@ -86,6 +86,18 @@ public class FallManager : MonoBehaviour
         }
     }
 
+    //public void SpawnRocket(Transform spawnPos, Vector2 _gridIndex, Transform _target)
+    //{
+    //    GameObject spawnedRocketObj = Instantiate(blockPrefab, spawnPos.position, Quaternion.identity, spawnedBlocksParent);
+    //    RocketBlock rkBlock = spawnedRocketObj.AddComponent<RocketBlock>();
+    //    rkBlock.gridIndex = new Vector2((int)_gridIndex.x, (int)_gridIndex.y);
+    //    rkBlock.target = _target;
+
+    //    rkBlock.SetupBlock();
+
+    //    gridManager.allBlocks[(int)_gridIndex.x].rows[(int)_gridIndex.y] = spawnedRocketObj;
+    //}
+
     public void SpawnRocket(Transform spawnPos, Vector2 _gridIndex, Transform _target)
     {
         GameObject spawnedRocketObj = Instantiate(blockPrefab, spawnPos.position, Quaternion.identity, spawnedBlocksParent);
@@ -97,5 +109,5 @@ public class FallManager : MonoBehaviour
 
         gridManager.allBlocks[(int)_gridIndex.x].rows[(int)_gridIndex.y] = spawnedRocketObj;
     }
-    
+
 }

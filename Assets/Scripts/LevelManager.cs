@@ -28,6 +28,9 @@ public class LevelManager : MonoBehaviour
 
     public void ChoosingLevel(int indexOfLevel)
     {
+        //crrLevelIndex = indexOfLevel;
+        //crrLevel = levelDataSOs[indexOfLevel];
+
         crrLevelIndex = indexOfLevel;
         crrLevel = levelDataSOs[indexOfLevel];
     }

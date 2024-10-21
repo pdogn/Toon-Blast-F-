@@ -22,6 +22,10 @@ public class LevelDataSO : ScriptableObject
     private CubeTypes[] m_patternTyPeFlatter;
     public CubeTypes[] cubeTypes => m_patternTyPeFlatter;
 
+    [SerializeField]
+    private QuadType quad;
+    public QuadType Quad => quad;
+
     public bool[,] GetPattern()
     {
         bool[,] pattern = new bool[m_width, m_height];

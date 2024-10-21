@@ -81,6 +81,14 @@ public class CubeBlock : Block
         });
     }
 
+    //public override void SetupBlock()
+    //{
+    //    mySpriteRenderer = gameObject.GetComponentInChildren<SpriteRenderer>();
+    //    mySpriteRenderer.transform.localScale = spriteSize;
+    //    mySpriteRenderer.sortingOrder = -(int)gridIndex.y + 1;
+    //    mySpriteRenderer.sprite = GetMySprite();
+    //}
+
     public override void SetupBlock()
     {
         mySpriteRenderer = gameObject.GetComponentInChildren<SpriteRenderer>();

@@ -57,6 +57,17 @@ public class UIManager : MonoBehaviour
         winMenu.SetActive(false);
     }
 
+    //public void OpenFailMenu()
+    //{
+    //    failMenu.SetActive(true);
+    //    AnimMenuEnd(failMenu.transform);
+    //}
+
+    //public void CloseFailMenu()
+    //{
+    //    failMenu.SetActive(false);
+    //}
+
     public void OpenFailMenu()
     {
         failMenu.SetActive(true);
@@ -100,3 +111,4 @@ public class UIManager : MonoBehaviour
         }
     }
 }
+

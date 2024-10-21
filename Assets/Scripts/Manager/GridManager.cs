@@ -12,7 +12,7 @@ public class GameObject2DArray
 
 public class GridManager : MonoBehaviour
 {
-    [SerializeField] public LevelDataSO dataLevel;
+    //[SerializeField] public LevelDataSO dataLevel;
     [SerializeField] private Transform spawnedBlocksParent;
     [SerializeField] private Transform spawnedPosObjsParent;
 
@@ -36,6 +36,17 @@ public class GridManager : MonoBehaviour
     public void SpawnStartBlocks()
     {
         //Xóa hết phần tử con trong 2 obj
+        //int tmpChildCount = spawnedPosObjsParent.childCount;
+        //for (int i = 0; i < tmpChildCount; i++)
+        //{
+        //    DestroyImmediate(spawnedPosObjsParent.GetChild(0).gameObject);
+        //}
+        //tmpChildCount = spawnedBlocksParent.childCount;
+        //for (int i = 0; i < tmpChildCount; i++)
+        //{
+        //    DestroyImmediate(spawnedBlocksParent.GetChild(0).gameObject);
+        //}
+
         int tmpChildCount = spawnedPosObjsParent.childCount;
         for (int i = 0; i < tmpChildCount; i++)
         {
@@ -47,7 +58,7 @@ public class GridManager : MonoBehaviour
             DestroyImmediate(spawnedBlocksParent.GetChild(0).gameObject);
         }
 
-        //Tính toán vị trí spawn
+        //Tính toán vị trí spawn block đầu tiên
         float blockSize = 0.4f;
         float gapSize = 0.1f;
         int gridSizeX = LevelManager.Instance.crrLevel.width;
@@ -90,18 +101,18 @@ public class GridManager : MonoBehaviour
         Floor.position = new Vector3(newPos.x, 0.25f + newPos.y + gridSizeY * 0.25f, 0);
     }
 
-    public void AddBlockTypeToBlockObj(GameObject blockObj, int xIndex, int yIndex, Transform spawnedPosTransform)
-    {
-        //BlockTypes curBlockType = blockTypes[xIndex, yIndex];
-        //CubeTypes curCubeType = cubeTypes[xIndex, yIndex];
-        CubeTypes curCubeType = (CubeTypes)UnityEngine.Random.Range(0, System.Enum.GetValues(typeof(CubeTypes)).Length);
-        CubeBlock currentBlock = blockObj.AddComponent<CubeBlock>();
-        blockObj.GetComponent<CubeBlock>().cubeType = curCubeType;
+    //public void AddBlockTypeToBlockObj(GameObject blockObj, int xIndex, int yIndex, Transform spawnedPosTransform)
+    //{
+    //    //BlockTypes curBlockType = blockTypes[xIndex, yIndex];
+    //    //CubeTypes curCubeType = cubeTypes[xIndex, yIndex];
+    //    CubeTypes curCubeType = (CubeTypes)UnityEngine.Random.Range(0, System.Enum.GetValues(typeof(CubeTypes)).Length);
+    //    CubeBlock currentBlock = blockObj.AddComponent<CubeBlock>();
+    //    blockObj.GetComponent<CubeBlock>().cubeType = curCubeType;
 
-        currentBlock.gridIndex = new Vector2(xIndex, yIndex);
-        currentBlock.target = spawnedPosTransform;
-        currentBlock.SetupBlock();
-    }
+    //    currentBlock.gridIndex = new Vector2(xIndex, yIndex);
+    //    currentBlock.target = spawnedPosTransform;
+    //    currentBlock.SetupBlock();
+    //}
 
     public void GetCubeType(GameObject blockObj ,int xIndex, int yIndex, Transform spawnedPosTransform)
     {
@@ -113,6 +124,12 @@ public class GridManager : MonoBehaviour
         currentBlock.gridIndex = new Vector2(xIndex, yIndex);
         currentBlock.target = spawnedPosTransform;
         currentBlock.SetupBlock();
+
+        //if (LevelManager.Instance.crrLevel.patternFlatter[yIndex * y + xIndex] == false)
+        //{
+        //    currentBlock.gameObject.SetActive(false);
+        //    allBlocks[xIndex].rows[yIndex] = null;
+        //}
 
         if (LevelManager.Instance.crrLevel.patternFlatter[yIndex * y + xIndex] == false)
         {

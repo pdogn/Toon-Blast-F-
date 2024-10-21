@@ -13,13 +13,16 @@ public class PuzzleLevelDataDrawer : Editor
     //
     private const string PROPERTY_PATH_TYPE = "m_patternTyPeFlatter";
 
+    private const string PROPERTY_QUAD_TYPE = "quad";
+
     private SerializedProperty sWidth;
     private SerializedProperty sHeight;
     private SerializedProperty sPattern;
     private SerializedProperty sMoves;
-    
     //
     private SerializedProperty sCubetype;
+
+    private SerializedProperty sQuad;
 
     private void OnEnable()
     {
@@ -30,6 +33,8 @@ public class PuzzleLevelDataDrawer : Editor
         
         //
         sCubetype = serializedObject.FindProperty(PROPERTY_PATH_TYPE);
+
+        sQuad = serializedObject.FindProperty(PROPERTY_QUAD_TYPE);
 
     }
 
@@ -50,6 +55,8 @@ public class PuzzleLevelDataDrawer : Editor
                     sHeight.intValue = uHeight > 0 ? uHeight : 1;
                     int uMoves = EditorGUILayout.IntField("Move", sMoves.intValue);
                     sMoves.intValue = uMoves > 0 ? uMoves : 1;
+
+                    sQuad.enumValueIndex = EditorGUILayout.Popup("Quad Type", sQuad.enumValueIndex, sQuad.enumDisplayNames);
                     // if (GUILayout.Button("Update Size"))
                     // {
                     //     sPattern.arraySize = sWidth.intValue * sHeight.intValue;

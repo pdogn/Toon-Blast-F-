@@ -7,8 +7,8 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: TexF
-  m_Shader: {fileID: 4800000, guid: ca311f27eade17b4e9310f7a34370dad, type: 3}
+  m_Name: PoisonF
+  m_Shader: {fileID: 4800000, guid: 78918af00f6fa39429bbd39e43a1a23e, type: 3}
   m_Parent: {fileID: 0}
   m_ModifiedSerializedProperties: 0
   m_ValidKeywords: []
@@ -43,10 +43,6 @@ Material:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
-    - _Gradient:
-        m_Texture: {fileID: 0}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
     - _MainTex:
         m_Texture: {fileID: 8400000, guid: d2333dae9b6d9d3448a7ce927c1f1ead, type: 2}
         m_Scale: {x: 1, y: 1}
@@ -65,9 +61,8 @@ Material:
         m_Offset: {x: 0, y: 0}
     m_Ints: []
     m_Floats:
-    - _BlurSize: 4.9
     - _BumpScale: 1
-    - _Cutoff: 0.115
+    - _Cutoff: 0.133
     - _DetailNormalMapScale: 1
     - _DstBlend: 0
     - _GlossMapScale: 1
@@ -80,13 +75,13 @@ Material:
     - _SmoothnessTextureChannel: 0
     - _SpecularHighlights: 1
     - _SrcBlend: 1
-    - _Stroke: 0.313
-    - _Stroke2: 0.272
+    - _Stroke: 0.239
+    - _Stroke2: 0.1
     - _UVSec: 0
     - _ZWrite: 1
     m_Colors:
-    - _Color: {r: 0.039793417, g: 0.71627986, b: 0.9169811, a: 1}
+    - _Color: {r: 0.10598476, g: 0.6226415, b: 0.09692062, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
-    - _StrokeColor: {r: 0.27735847, g: 1, b: 0.9929562, a: 0.9019608}
-    - _StrokeColor2: {r: 0.9622642, g: 0.31046635, b: 0.31046635, a: 1}
+    - _StrokeColor: {r: 0.23113209, g: 1, b: 0.2905614, a: 1}
+    - _StrokeColor2: {r: 1, g: 1, b: 1, a: 1}
   m_BuildTextureStacks: []

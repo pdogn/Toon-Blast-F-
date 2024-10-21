@@ -44,6 +44,23 @@ public class GameManager : MonoBehaviour
 
     void CheckGameState()
     {
+        //if (ended == false)
+        //{
+        //    ended = true;
+        //    Collider2D col = Physics2D.OverlapBox(person.transform.position + new Vector3(0, 0.5f, 0), new Vector2(0.5f, 0.4f), 0);
+
+        //    if (col.gameObject.tag == "Fluid")
+        //    {
+        //        //isWin = false;
+        //        UIManager.instance.OpenFailMenu();
+        //    }
+        //    else
+        //    {
+        //        //isWin = true;
+        //        UIManager.instance.OpenWinMenu();
+        //    }
+        //}
+
         if (ended == false)
         {
             ended = true;
